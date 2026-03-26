@@ -100,8 +100,7 @@ class ObjectTest extends TestCase
             'status' => 'pending',
         ]);
 
-        // Readonly properties should throw on modification
-        $this->expectError();
+        $this->expectException(\Error::class);
         $v->status = 'verified';
     }
 }
