@@ -35,7 +35,7 @@ class HttpClient
                 'X-API-KEY: ' . $this->apiKey,
                 'Content-Type: application/json',
                 'Accept: application/json',
-                'User-Agent: simpleverify-php/1.0',
+                'User-Agent: simpleverify-php/' . (\Composer\InstalledVersions::getPrettyVersion('simpleverify/simpleverify-php') ?? 'dev'),
             ],
         ]);
 
