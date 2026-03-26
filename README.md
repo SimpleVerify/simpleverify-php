@@ -1,6 +1,6 @@
 # SimpleVerify PHP SDK
 
-Official PHP client library for the [SimpleVerify](https://simpleverify.com) API. Send and verify SMS codes, email codes, and magic links with a few lines of code.
+Official PHP client library for the [SimpleVerify](https://simpleverify.io) API. Send and verify SMS codes, email codes, and magic links with a few lines of code.
 
 ## Requirements
 
@@ -49,7 +49,7 @@ $client = new Client('vk_test_...');
 // With options
 $client = new Client([
     'api_key'  => 'vk_test_...',
-    'base_url' => 'https://api.simpleverify.com', // default
+    'base_url' => 'https://api.simpleverify.io', // default
     'timeout'  => 30,                              // default, in seconds
 ]);
 
