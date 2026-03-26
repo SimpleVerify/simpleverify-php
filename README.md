@@ -112,7 +112,7 @@ In live mode (`vk_live_` key), `$verification->test` is `null`.
 ### Check a Code
 
 ```php
-$result = $client->verifications->check('verification-id', '482913');
+$result = $client->verifications->check($verification->verificationId, '482913');
 
 $result->valid;          // true or false
 $result->verificationId; // UUID
@@ -125,7 +125,7 @@ An invalid code returns `valid: false` (not an exception). Only check the `valid
 ### Get Verification Status
 
 ```php
-$status = $client->verifications->get('verification-id');
+$status = $client->verifications->get($verification->verificationId);
 
 $status->status;    // "pending", "verified", or "expired"
 $status->createdAt; // ISO 8601 datetime
