@@ -10,7 +10,7 @@ use SimpleVerify\Resources\Verifications;
  */
 class Client
 {
-    private const DEFAULT_BASE_URL = 'https://api.simpleverify.com';
+    private const DEFAULT_BASE_URL = 'https://api.simpleverify.io';
     private const DEFAULT_TIMEOUT = 30;
     private const API_KEY_PATTERN = '/^vk_(test|live)_[0-9a-f]{64}$/';
 

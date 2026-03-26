@@ -52,7 +52,7 @@ class VerificationsTest extends TestCase
 
         $req = $mock->getLastRequest();
         $this->assertSame('POST', $req['method']);
-        $this->assertSame('/v1/verify/send', $req['path']);
+        $this->assertSame('/api/v1/verify/send', $req['path']);
         $this->assertSame('sms', $req['body']['type']);
     }
 
@@ -133,7 +133,7 @@ class VerificationsTest extends TestCase
 
         $req = $mock->getLastRequest();
         $this->assertSame('POST', $req['method']);
-        $this->assertSame('/v1/verify/check', $req['path']);
+        $this->assertSame('/api/v1/verify/check', $req['path']);
         $this->assertSame('abc-123', $req['body']['verification_id']);
         $this->assertSame('482913', $req['body']['code']);
     }
@@ -181,6 +181,6 @@ class VerificationsTest extends TestCase
 
         $req = $mock->getLastRequest();
         $this->assertSame('GET', $req['method']);
-        $this->assertSame('/v1/verify/abc-123', $req['path']);
+        $this->assertSame('/api/v1/verify/abc-123', $req['path']);
     }
 }
