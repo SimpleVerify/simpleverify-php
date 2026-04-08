@@ -4,6 +4,7 @@ namespace SimpleVerify\Tests;
 
 use PHPUnit\Framework\TestCase;
 use SimpleVerify\Client;
+use SimpleVerify\Objects\MagicLinkExchange;
 use SimpleVerify\Objects\Verification;
 use SimpleVerify\Objects\VerificationCheck;
 
@@ -182,5 +183,35 @@ class VerificationsTest extends TestCase
         $req = $mock->getLastRequest();
         $this->assertSame('GET', $req['method']);
         $this->assertSame('/api/v1/verify/abc-123', $req['path']);
+    }
+
+    public function test_exchange_magic_link(): void
+    {
+        $mock = new MockHttpClient();
+        $mock->addResponse([
+            'status' => 'success',
+            'data' => [
+                'verification_id' => 'magic-456',
+                'type' => 'magic_link',
+                'destination' => 'user@example.com',
+                'metadata' => ['user_id' => 42],
+                'verified_at' => '2026-03-25T12:05:00+00:00',
+                'environment' => 'test',
+            ],
+        ]);
+
+        $client = $this->makeClient($mock);
+        $result = $client->verifications->exchange('magic-456', 'exchange-code-123');
+
+        $this->assertInstanceOf(MagicLinkExchange::class, $result);
+        $this->assertSame('magic_link', $result->type);
+        $this->assertSame('user@example.com', $result->destination);
+        $this->assertSame(['user_id' => 42], $result->metadata);
+
+        $req = $mock->getLastRequest();
+        $this->assertSame('POST', $req['method']);
+        $this->assertSame('/api/v1/verify/exchange', $req['path']);
+        $this->assertSame('magic-456', $req['body']['verification_id']);
+        $this->assertSame('exchange-code-123', $req['body']['exchange_code']);
     }
 }

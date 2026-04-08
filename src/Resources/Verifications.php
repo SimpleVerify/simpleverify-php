@@ -3,6 +3,7 @@
 namespace SimpleVerify\Resources;
 
 use SimpleVerify\HttpClient;
+use SimpleVerify\Objects\MagicLinkExchange;
 use SimpleVerify\Objects\Verification;
 use SimpleVerify\Objects\VerificationCheck;
 
@@ -34,5 +35,15 @@ class Verifications
         $data = $this->http->request('GET', '/api/v1/verify/' . urlencode($verificationId));
 
         return Verification::fromArray($data);
+    }
+
+    public function exchange(string $verificationId, string $exchangeCode): MagicLinkExchange
+    {
+        $data = $this->http->request('POST', '/api/v1/verify/exchange', [
+            'verification_id' => $verificationId,
+            'exchange_code' => $exchangeCode,
+        ]);
+
+        return MagicLinkExchange::fromArray($data);
     }
 }
