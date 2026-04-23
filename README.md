@@ -1,5 +1,11 @@
 # SimpleVerify PHP SDK
 
+[![Latest Stable Version](https://img.shields.io/packagist/v/simpleverify/simpleverify-php.svg)](https://packagist.org/packages/simpleverify/simpleverify-php)
+[![Total Downloads](https://img.shields.io/packagist/dt/simpleverify/simpleverify-php.svg)](https://packagist.org/packages/simpleverify/simpleverify-php)
+[![PHP Version Require](https://img.shields.io/packagist/php-v/simpleverify/simpleverify-php.svg)](https://packagist.org/packages/simpleverify/simpleverify-php)
+[![License](https://img.shields.io/packagist/l/simpleverify/simpleverify-php.svg)](https://packagist.org/packages/simpleverify/simpleverify-php)
+[![Tests](https://github.com/SimpleVerify/simpleverify-php/actions/workflows/tests.yml/badge.svg)](https://github.com/SimpleVerify/simpleverify-php/actions/workflows/tests.yml)
+
 Official PHP client library for the [SimpleVerify](https://simpleverify.io) API. Send and verify SMS codes, email codes, and magic links with a few lines of code.
 
 ## Requirements

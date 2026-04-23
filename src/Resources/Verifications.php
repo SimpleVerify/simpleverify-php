@@ -15,14 +15,14 @@ class Verifications
 
     public function send(array $params): Verification
     {
-        $data = $this->http->request('POST', '/api/v1/verify/send', $params);
+        $data = $this->http->request('POST', '/v1/verify/send', $params);
 
         return Verification::fromArray($data);
     }
 
     public function check(string $verificationId, string $code): VerificationCheck
     {
-        $data = $this->http->request('POST', '/api/v1/verify/check', [
+        $data = $this->http->request('POST', '/v1/verify/check', [
             'verification_id' => $verificationId,
             'code' => $code,
         ]);
@@ -32,14 +32,14 @@ class Verifications
 
     public function get(string $verificationId): Verification
     {
-        $data = $this->http->request('GET', '/api/v1/verify/' . urlencode($verificationId));
+        $data = $this->http->request('GET', '/v1/verify/' . urlencode($verificationId));
 
         return Verification::fromArray($data);
     }
 
     public function exchange(string $verificationId, string $exchangeCode): MagicLinkExchange
     {
-        $data = $this->http->request('POST', '/api/v1/verify/exchange', [
+        $data = $this->http->request('POST', '/v1/verify/exchange', [
             'verification_id' => $verificationId,
             'exchange_code' => $exchangeCode,
         ]);
